@@ -19,7 +19,6 @@ public class FoodOrderApp {
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
     private String customerName;
-    private Customer customer;
 
 
 
@@ -49,7 +48,7 @@ public class FoodOrderApp {
                 processCommand(command);
             }
         }
-        saveToJSON();
+        save_to_jSON();
 
         System.out.println("\nPlease visit again!");
     }
@@ -72,32 +71,11 @@ public class FoodOrderApp {
     //MODIFIES: this
     //EFFECTS: initializes Customer
     private void init() {
-//        Scanner nameInput = new Scanner(System.in);
-//        System.out.println("Please enter your name: ");
-//        customerName = nameInput.next();
-//        customerName.toLowerCase();
-//        customer = new Customer(customerName);
-
-        System.out.println("Are you first time here?");
-        System.out.println("Press 1 for yes, and 0 for no");
-        Scanner input = new Scanner(System.in);
-        String yesNo;
-        yesNo = input.next();
-
-        System.out.println("What is your name?");
         Scanner nameInput = new Scanner(System.in);
+        System.out.println("Please enter your name: ");
         customerName = nameInput.next();
         customerName.toLowerCase();
         customer = new Customer(customerName);
-
-        if (yesNo.equals("1")) {
-            createNewJson();
-        } else {
-            loadOldJson();
-        }
-
-
-
     }
 
     //EFFECTS: display menu of options to user
@@ -149,7 +127,6 @@ public class FoodOrderApp {
         if (chicken > 0) {
             for (int i = 0; i < chicken; i++) {
                 customer.addFood(fd3);
-                customer
             }
         }
         System.out.println("How many beef sandwiches? (Beef is $8 each)");
@@ -187,19 +164,19 @@ public class FoodOrderApp {
     }
 
     //EFFECTS: save ordered history to jSON file
-    public void saveToJSON() {
+    public void save_to_jSON(){
 
     }
 
     //EFFECTS: create new .json file if new user
-    public void createNewJson() {
+    public void create_new_json(){
         System.out.println("first time");
         JSON_STORE = "./data/" + customerName + "workroom.json";
 
     }
 
     //EFFECTS: load old .json file
-    public void loadOldJson() {
+    public void load_old_json(){
         System.out.println("have been here");
         JSON_STORE = "./data/" + customerName + "workroom.json";
     }
